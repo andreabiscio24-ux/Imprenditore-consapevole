@@ -552,10 +552,14 @@ body::before {
 
 /* ─── Video ──────────────────────────────────────────────────── */
 
-.video-wrap {
-  max-width: 700px;
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
   margin: 1.5rem auto;
-  padding: 0 2rem;
 }
 
 /* ─── Info grid ──────────────────────────────────────────────── */

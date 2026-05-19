@@ -763,6 +763,23 @@ body::before {
   border-color: rgba(44,26,14,0.35);
 }
 
+select.waitlist-input {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6050' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  padding-right: 3rem;
+}
+
+.waitlist-textarea {
+  border-radius: 16px;
+  min-height: 100px;
+  resize: vertical;
+  padding: 1rem 1.5rem;
+}
+
 .waitlist-success {
   text-align: center;
 }

@@ -74,13 +74,15 @@
   <!-- ── POSTI DISPONIBILI ─────────────────────────────────── -->
   <p class="posti-label">Prossima apertura: Giugno 2026</p>
 
-  <!-- ── BOTTONE JOIN ───────────────────────────────────────── -->
+  <!-- ── FORM LISTA D'ATTESA ──────────────────────────────────── -->
   <div class="join-wrap">
-    <a class="join-btn"
-       href="https://www.instagram.com/andrea.biscio?igsh=em80NWY0ZTBiOXU4&utm_source=qr"
-       target="_blank" rel="noopener">
-      Scrivimi per entrare in lista d'attesa →
-    </a>
+    <form class="waitlist-form" id="waitlist-form-top" action="https://formspree.io/f/xjgzgbog" method="POST">
+      <input type="text" name="name" placeholder="Il tuo nome" required class="waitlist-input">
+      <input type="email" name="email" placeholder="La tua email" required class="waitlist-input">
+      <button type="submit" class="join-btn">Entra in lista d'attesa →</button>
+      <p class="comm-note">Ti avviso personalmente quando si libera un posto.</p>
+    </form>
+    <p class="waitlist-success comm-note" id="waitlist-success-top" hidden>Perfetto! Ti avviso personalmente quando si libera un posto.</p>
   </div>
 
   <!-- ── CORPO TESTO ────────────────────────────────────────── -->
@@ -144,14 +146,13 @@
 
     <div class="sep"></div>
 
-    <a class="join-btn"
-       href="https://www.instagram.com/andrea.biscio?igsh=em80NWY0ZTBiOXU4&utm_source=qr"
-       target="_blank" rel="noopener"
-       style="margin: 2rem 0; display: block;">
-      Scrivimi per entrare in lista d'attesa →
-    </a>
-
-    <p class="comm-note">Ti avviso personalmente quando si libera un posto.</p>
+    <form class="waitlist-form" id="waitlist-form-bottom" action="https://formspree.io/f/xjgzgbog" method="POST" style="margin: 2rem 0;">
+      <input type="text" name="name" placeholder="Il tuo nome" required class="waitlist-input">
+      <input type="email" name="email" placeholder="La tua email" required class="waitlist-input">
+      <button type="submit" class="join-btn">Entra in lista d'attesa →</button>
+      <p class="comm-note">Ti avviso personalmente quando si libera un posto.</p>
+    </form>
+    <p class="waitlist-success comm-note" id="waitlist-success-bottom" hidden>Perfetto! Ti avviso personalmente quando si libera un posto.</p>
 
   </div>
 

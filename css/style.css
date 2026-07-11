@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 /* ─── Reset ─────────────────────────────────────────────────── */
 
@@ -9,18 +9,28 @@
 }
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
+/* Direzione: "Blueprint / strumento di precisione" — ispirato ai
+   disegni tecnici architettonici. Inchiostro grafite + carta fredda,
+   blu cianografia per direzione/lucidità, rame per urgenza/CTA. */
 
 :root {
-  --linen:              #FDFAF5;
-  --sand:               #F5EDE0;
-  --sand-dark:          #E8D9C4;
-  --espresso:           #1A0A00;
-  --espresso-mid:       #3D2010;
-  --espresso-light:     #7A6050;
-  --warm-accent:        #C17B3F;
-  --warm-accent-light:  #D4956A;
-  --border:             rgba(26,10,0,0.1);
-  --border-strong:      rgba(26,10,0,0.22);
+  --ink:                #12161C;
+  --ink-soft:            #1C222B;
+  --ink-line:            rgba(243,244,241,0.14);
+  --paper:               #F3F4F1;
+  --paper-dim:           #E7E8E3;
+  --paper-line:          rgba(18,22,28,0.12);
+  --paper-line-strong:   rgba(18,22,28,0.22);
+  --graphite:            #565F68;
+  --graphite-soft:       #8A9099;
+  --blueprint:           #2451D6;
+  --blueprint-deep:      #17348C;
+  --blueprint-tint:      rgba(36,81,214,0.08);
+  --copper:              #C1531F;
+  --copper-light:        #E07B3F;
+  --font-display:        'Space Grotesk', sans-serif;
+  --font-body:           'IBM Plex Sans', sans-serif;
+  --font-mono:           'IBM Plex Mono', monospace;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
@@ -30,17 +40,17 @@ html {
 }
 
 body {
-  background-color: var(--linen);
-  color: var(--espresso);
-  font-family: 'DM Sans', sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.7;
   min-height: 100vh;
   position: relative;
 }
 
-/* ─── Grain texture ──────────────────────────────────────────── */
+/* ─── Blueprint grid texture ─────────────────────────────────── */
 
 body::before {
   content: '';
@@ -48,10 +58,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.3;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(18,22,28,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,22,28,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* ─── Page layout ────────────────────────────────────────────── */
@@ -69,16 +80,26 @@ body::before {
 /* ─── Avatar ─────────────────────────────────────────────────── */
 
 .avatar {
-  width: 110px;
-  height: 110px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--border-strong);
-  background: var(--sand-dark);
+  border: 2px solid var(--paper-line-strong);
+  background: var(--paper-dim);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--blueprint);
+  border-radius: 50%;
+  opacity: 0.35;
 }
 
 .avatar img {
@@ -90,38 +111,33 @@ body::before {
   display: block;
 }
 
-.avatar-fallback {
-  display: flex;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 300;
-  color: var(--espresso-mid);
-}
-
 /* ─── Identity ───────────────────────────────────────────────── */
 
 .brand-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--espresso);
-  letter-spacing: 0.01em;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
 .brand-author {
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  margin-bottom: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--graphite);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
 }
 
 .brand-tagline {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  color: var(--espresso-light);
+  color: var(--graphite);
   text-align: center;
-  max-width: 300px;
-  margin-bottom: 1.8rem;
+  max-width: 320px;
+  margin-bottom: 2rem;
   line-height: 1.6;
 }
 
@@ -132,45 +148,45 @@ body::before {
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
-  max-width: 360px;
+  max-width: 380px;
 }
 
 .pill {
   display: block;
   width: 100%;
-  padding: 0.9rem 1.5rem;
-  border-radius: 60px;
-  border: 1.5px solid var(--border-strong);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--paper-line-strong);
   background: transparent;
-  color: var(--espresso);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 300;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
   text-align: center;
   text-decoration: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
 }
 
 .pill:hover {
-  background: var(--sand);
-  border-color: var(--warm-accent-light);
-  color: var(--espresso);
+  background: var(--paper-dim);
+  border-color: var(--blueprint);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 
 .pill.filled {
-  background: var(--espresso);
-  color: var(--linen);
-  border-color: var(--espresso);
-  box-shadow: 0 4px 20px rgba(26,10,0,0.25);
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  box-shadow: 0 4px 20px rgba(18,22,28,0.2);
 }
 
 .pill.filled:hover {
-  background: var(--warm-accent);
-  border-color: var(--warm-accent);
-  color: var(--linen);
+  background: var(--blueprint);
+  border-color: var(--blueprint);
+  color: var(--paper);
 }
 
 /* ─── Footer ─────────────────────────────────────────────────── */
@@ -183,16 +199,17 @@ body::before {
 }
 
 .page-footer a {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--espresso-light);
+  color: var(--graphite);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .page-footer a:hover {
-  color: var(--warm-accent);
+  color: var(--blueprint);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -212,51 +229,62 @@ body::before {
 }
 
 .c-navbar.scrolled {
-  background: rgba(245, 237, 224, 0.88);
+  background: rgba(243, 244, 241, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--paper-line);
 }
 
 .c-navbar__back {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--espresso-light);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .c-navbar__back:hover {
-  color: var(--espresso);
+  color: var(--blueprint);
 }
 
 /* ─── Shared section utilities ───────────────────────────────── */
 
 .c-label {
-  display: block;
-  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--warm-accent);
-  margin-bottom: 0.75rem;
+  color: var(--blueprint);
+  margin-bottom: 0.9rem;
+}
+
+.c-label::before {
+  content: '+';
+  color: var(--copper);
+  font-weight: 500;
 }
 
 .c-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
   line-height: 1.15;
-  color: var(--espresso);
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .c-h2 em {
-  font-style: italic;
+  font-style: normal;
+  color: var(--blueprint);
 }
 
 .c-h2--light {
-  color: var(--espresso);
+  color: var(--paper);
 }
 
 .c-pill {
@@ -271,65 +299,110 @@ body::before {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 8rem 2rem 5rem;
+  padding: 8.5rem 2rem 5rem;
   gap: 1.25rem;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, var(--blueprint-tint), transparent);
 }
 
 .c-hero__title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 300;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  color: var(--espresso);
-  max-width: 680px;
+  color: var(--ink);
+  max-width: 720px;
 }
 
 .c-hero__title em {
-  font-style: italic;
+  font-style: normal;
+  color: var(--blueprint);
 }
 
 .c-hero__sub {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 300;
-  color: var(--espresso-light);
-  max-width: 500px;
-  line-height: 2;
-  margin-bottom: 2rem;
+  color: var(--graphite);
+  max-width: 520px;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
 }
 
 .c-hero__note {
-  font-size: 0.78rem;
-  color: var(--espresso-light);
-  font-weight: 300;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--graphite-soft);
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .c-hero__quote {
-  font-size: 0.78rem;
-  color: var(--espresso-light);
+  font-size: 0.85rem;
+  color: var(--graphite);
   font-weight: 300;
   font-style: italic;
-  margin-bottom: 1.5rem;
+  max-width: 480px;
+  margin-bottom: 1rem;
+  border-left: 2px solid var(--copper);
+  padding-left: 1rem;
+  text-align: left;
 }
 
 /* ─── Sections ───────────────────────────────────────────────── */
 
 .c-section {
   padding: 6rem 1.5rem;
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .c-section--wide {
-  max-width: 800px;
+  max-width: 860px;
   padding: 6rem 1.5rem;
 }
 
-.include-card,
-.metodo-card {
-  border-radius: 12px;
-  padding: 1.8rem;
+/* ─── Instrument cards (firma visiva: mirini d'angolo) ───────── */
+/* Le card principali (metodo, testimonianze, prezzo) hanno piccoli
+   mirini d'angolo come i crocini di registro sui disegni tecnici. */
+
+.metodo-card,
+.testi-card,
+.price-box {
+  position: relative;
+}
+
+.metodo-card::before,
+.metodo-card::after,
+.testi-card::before,
+.testi-card::after,
+.price-box::before,
+.price-box::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--blueprint);
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.metodo-card::before, .testi-card::before, .price-box::before {
+  top: 8px; left: 8px;
+  border-top: 1.5px solid; border-left: 1.5px solid;
+}
+
+.metodo-card::after, .testi-card::after, .price-box::after {
+  bottom: 8px; right: 8px;
+  border-bottom: 1.5px solid; border-right: 1.5px solid;
+}
+
+.metodo-card:hover::before, .metodo-card:hover::after,
+.testi-card:hover::before, .testi-card:hover::after,
+.price-box:hover::before, .price-box:hover::after {
+  opacity: 1;
+  width: 16px;
+  height: 16px;
 }
 
 /* ─── Step timeline ──────────────────────────────────────────── */
@@ -350,40 +423,48 @@ body::before {
 }
 
 .step-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--sand-dark);
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--copper);
   line-height: 1;
+  padding-top: 0.2rem;
 }
 
 .step-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--espresso);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ink);
   margin-bottom: 0.4rem;
 }
 
 .step-text {
-  font-size: 0.9rem;
-  color: var(--espresso-light);
+  font-size: 0.92rem;
+  color: var(--graphite);
   font-weight: 300;
   line-height: 1.8;
 }
 
 .step-list-items {
   font-size: 0.88rem;
-  color: var(--espresso-light);
+  color: var(--graphite);
   font-weight: 300;
   line-height: 2;
   margin-top: 1rem;
   padding-left: 1.2rem;
 }
 
+.step-list-items strong {
+  color: var(--ink);
+  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
 .step-note {
-  font-size: 0.8rem;
-  color: var(--espresso-light);
+  font-size: 0.82rem;
+  color: var(--graphite-soft);
   font-weight: 300;
   font-style: italic;
   margin-top: 1rem;
@@ -392,12 +473,150 @@ body::before {
 .step-link {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1.5px solid rgba(26,10,0,0.25);
-  transition: border-color 0.2s ease;
+  border-bottom: 1.5px solid var(--blueprint);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .step-link:hover {
-  border-color: rgba(26,10,0,0.6);
+  color: var(--blueprint);
+}
+
+/* ─── Metodo grid (D.I.R.E.Z.I.O.N.E. / S.T.U.D.I.O.) ────────── */
+
+.metodo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.metodo-card {
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 4px;
+  padding: 1.6rem 1.3rem;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.metodo-card:hover {
+  background: white;
+  border-color: var(--blueprint);
+}
+
+.metodo-letter {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--blueprint);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.metodo-nome {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.metodo-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--graphite);
+  line-height: 1.6;
+}
+
+/* ─── Risultati list ──────────────────────────────────────────── */
+
+.risultati-list {
+  list-style: none;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.risultati-list li {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--graphite);
+  line-height: 1.8;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.risultati-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--blueprint);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  top: 0.15em;
+}
+
+.risultati-list strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ─── Chi è per te / non per te ───────────────────────────────── */
+
+.chi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.chi-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.chi-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--paper-line-strong);
+}
+
+.chi-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.chi-list li {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--graphite);
+  line-height: 1.7;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.chi-list--yes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--blueprint);
+  font-weight: 500;
+}
+
+.chi-list--no li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--graphite-soft);
 }
 
 /* ─── Testimonianze ──────────────────────────────────────────── */
@@ -414,66 +633,168 @@ body::before {
 }
 
 .testi-card {
-  background: var(--linen);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 4px;
   padding: 1.8rem;
-  transition: background 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .testi-card:hover {
-  background: var(--sand);
+  background: white;
+  border-color: var(--blueprint);
 }
 
 .testi-testo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-style: italic;
+  font-size: 0.95rem;
   font-weight: 300;
-  color: var(--espresso);
-  line-height: 1.6;
+  color: var(--ink);
+  line-height: 1.7;
   margin-bottom: 1.2rem;
 }
 
 .testi-nome {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--espresso);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .testi-ruolo {
-  font-size: 0.78rem;
-  color: var(--espresso-light);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--graphite);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Bonus list ──────────────────────────────────────────────── */
+
+.bonus-list {
+  list-style: none;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bonus-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.bonus-list li:last-child {
+  border-bottom: none;
+}
+
+.bonus-nome {
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+.bonus-desc {
+  font-size: 0.82rem;
   font-weight: 300;
+  color: var(--graphite);
+}
+
+/* ─── Price box ───────────────────────────────────────────────── */
+
+.price-box {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: var(--ink);
+  border-radius: 6px;
+}
+
+.price-box::before, .price-box::after {
+  border-color: var(--copper-light);
+}
+
+.price-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--copper-light);
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+  margin-bottom: 1.2rem;
+}
+
+.price-old {
+  text-decoration: line-through;
+  text-decoration-color: var(--graphite-soft);
+  color: var(--graphite-soft);
+  font-size: 0.55em;
+  font-weight: 300;
+  margin-right: 0.5rem;
+}
+
+.price-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--paper);
+}
+
+.price-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite-soft);
+  margin-top: 0.6rem;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ─── CTA finale ─────────────────────────────────────────────── */
 
 .cta-section {
-  background: var(--sand);
-  padding: 5rem 2rem;
+  background: var(--ink);
+  padding: 5.5rem 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.cta-note {
-  margin-top: 1rem;
-  font-size: 0.82rem;
-  color: var(--espresso-light);
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--ink-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-.cta-note a {
-  color: var(--espresso-mid);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s;
+.cta-section .c-hero__sub {
+  color: var(--graphite-soft);
+  position: relative;
 }
 
-.cta-note a:hover {
-  color: var(--warm-accent);
+.cta-section .c-hero__note {
+  position: relative;
+}
+
+.cta-section .c-pill {
+  position: relative;
 }
 
 /* ─── Footer consulenza ──────────────────────────────────────── */
@@ -481,19 +802,20 @@ body::before {
 .c-footer {
   text-align: center;
   padding: 2.5rem 2rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--paper-line);
 }
 
 .c-footer a {
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--espresso-light);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .c-footer a:hover {
-  color: var(--espresso);
+  color: var(--blueprint);
 }
 
 /* ─── Media queries ──────────────────────────────────────────── */
@@ -515,206 +837,10 @@ body::before {
     gap: 1rem;
   }
 
-  .include-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ─── Metodo grid (D.I.R.E.Z.I.O.N.E. / S.T.U.D.I.O.) ────────── */
-
-.metodo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-}
-
-.metodo-card {
-  background: var(--linen);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem 1.3rem;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.metodo-card:hover {
-  background: var(--sand);
-  border-color: var(--warm-accent-light);
-}
-
-.metodo-letter {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--warm-accent);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.metodo-nome {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--espresso);
-  margin-bottom: 0.4rem;
-}
-
-.metodo-desc {
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  line-height: 1.6;
-}
-
-/* ─── Risultati list ──────────────────────────────────────────── */
-
-.risultati-list {
-  list-style: none;
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.risultati-list li {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  line-height: 1.8;
-  padding-left: 1.6rem;
-  position: relative;
-}
-
-.risultati-list li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  color: var(--warm-accent);
-  font-size: 0.7rem;
-  top: 0.4em;
-}
-
-.risultati-list strong {
-  color: var(--espresso);
-  font-weight: 500;
-}
-
-/* ─── Chi è per te / non per te ───────────────────────────────── */
-
-.chi-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2.5rem;
-}
-
-.chi-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.chi-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--espresso);
-  margin-bottom: 1rem;
-}
-
-.chi-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.chi-list li {
-  font-size: 0.88rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  line-height: 1.7;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.chi-list--yes li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--warm-accent);
-  font-weight: 500;
-}
-
-.chi-list--no li::before {
-  content: "✕";
-  position: absolute;
-  left: 0;
-  color: var(--espresso-light);
-  opacity: 0.6;
-}
-
-/* ─── Bonus list ──────────────────────────────────────────────── */
-
-.bonus-list {
-  list-style: none;
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.bonus-list li {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding-bottom: 1.1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.bonus-list li:last-child {
-  border-bottom: none;
-}
-
-.bonus-nome {
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--espresso);
-}
-
-.bonus-desc {
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-}
-
-/* ─── Price box ───────────────────────────────────────────────── */
-
-.price-box {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2.5rem;
-  background: var(--sand);
-  border-radius: 16px;
-}
-
-.price-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 500;
-  color: var(--espresso);
-}
-
-.price-note {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  margin-top: 0.3rem;
-}
-
-@media (max-width: 600px) {
   .metodo-grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .chi-grid {
     grid-template-columns: 1fr;
   }
@@ -727,38 +853,41 @@ body::before {
 /* ─── Header ─────────────────────────────────────────────────── */
 
 .comm-header {
-  padding-top: 5rem;
-  max-width: 700px;
+  padding-top: 8.5rem;
+  max-width: 720px;
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, var(--blueprint-tint), transparent);
 }
 
 .comm-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 300;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  color: var(--espresso);
+  color: var(--ink);
 }
 
 .comm-author {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--espresso-light);
-  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite);
+  margin-top: 0.4rem;
 }
 
 /* ─── Video ──────────────────────────────────────────────────── */
 
 .video-wrapper {
   position: relative;
-  max-width: 680px;
-  margin: 2rem auto;
-  border-radius: 16px;
+  max-width: 700px;
+  margin: 2.5rem auto;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(44,26,14,0.10);
+  border: 1px solid var(--paper-line-strong);
   aspect-ratio: 16 / 9;
 }
 
@@ -769,7 +898,6 @@ body::before {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 16px;
 }
 
 /* ─── Info grid ──────────────────────────────────────────────── */
@@ -786,11 +914,16 @@ body::before {
 .info-box {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: var(--espresso-mid);
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.info-box svg {
+  color: var(--blueprint);
+  flex-shrink: 0;
 }
 
 /* ─── Posti label ────────────────────────────────────────────── */
@@ -798,12 +931,12 @@ body::before {
 .posti-label {
   max-width: 700px;
   margin: 0 auto 1rem;
-  padding: 0 2rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--warm-accent);
-  letter-spacing: 0.04em;
+  padding: 0.6rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--copper);
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
@@ -820,15 +953,15 @@ body::before {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  padding: 1rem 2.5rem;
-  border-radius: 60px;
+  padding: 1.05rem 2.5rem;
+  border-radius: 8px;
   border: none;
-  background: var(--espresso);
-  color: var(--linen);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -836,56 +969,62 @@ body::before {
 }
 
 .join-btn:hover {
-  background: var(--espresso-mid);
+  background: var(--blueprint);
 }
 
 /* ─── Body text ──────────────────────────────────────────────── */
 
 .comm-body {
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 2rem 2rem 5rem;
 }
 
 .comm-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--espresso);
-  line-height: 1.6;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
   margin-bottom: 1.5rem;
+  border-left: 2px solid var(--copper);
+  padding-left: 1.2rem;
 }
 
 .comm-attribution {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--espresso-light);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite);
   margin-bottom: 2rem;
 }
 
 .comm-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   font-weight: 300;
-  color: var(--espresso-light);
+  color: var(--graphite);
   line-height: 1.9;
   margin-bottom: 1.5rem;
 }
 
+.comm-text strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
 .sep {
   border: none;
-  border-top: 1px solid var(--border);
-  margin: 2rem 0;
-  opacity: 0.4;
+  border-top: 1px solid var(--paper-line);
+  margin: 2.5rem 0;
 }
 
 .comm-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
   line-height: 1.15;
-  color: var(--espresso);
+  letter-spacing: -0.01em;
+  color: var(--ink);
   margin: 2rem 0 1.2rem;
 }
 
@@ -895,22 +1034,22 @@ body::before {
 }
 
 .comm-list li {
-  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
-  color: var(--espresso-light);
+  color: var(--graphite);
   line-height: 2;
   padding-left: 1.5rem;
   position: relative;
 }
 
 .comm-list li::before {
-  content: "✦";
+  content: "→";
   position: absolute;
   left: 0;
-  color: var(--warm-accent);
-  font-size: 0.7rem;
-  top: 0.45em;
+  color: var(--blueprint);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  top: 0.25em;
 }
 
 .comm-testimonials {
@@ -921,10 +1060,10 @@ body::before {
 }
 
 .comm-note {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--espresso-light);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--graphite);
   text-align: center;
   margin-top: 0.8rem;
 }
@@ -942,12 +1081,12 @@ body::before {
 .waitlist-input {
   width: 100%;
   max-width: 480px;
-  padding: 0.9rem 1.5rem;
-  border-radius: 60px;
-  border: 1.5px solid rgba(44,26,14,0.15);
-  background: var(--linen);
-  color: var(--espresso);
-  font-family: 'DM Sans', sans-serif;
+  padding: 0.95rem 1.4rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--paper-line-strong);
+  background: white;
+  color: var(--ink);
+  font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 300;
   outline: none;
@@ -956,28 +1095,28 @@ body::before {
 }
 
 .waitlist-input::placeholder {
-  color: var(--espresso-light);
+  color: var(--graphite-soft);
 }
 
 .waitlist-input:focus {
-  border-color: rgba(44,26,14,0.35);
+  border-color: var(--blueprint);
 }
 
 select.waitlist-input {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6050' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23565F68' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1.2rem center;
   padding-right: 3rem;
 }
 
 .waitlist-textarea {
-  border-radius: 16px;
+  border-radius: 10px;
   min-height: 100px;
   resize: vertical;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.4rem;
 }
 
 .waitlist-success {

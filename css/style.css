@@ -520,6 +520,206 @@ body::before {
   }
 }
 
+/* ─── Metodo grid (D.I.R.E.Z.I.O.N.E. / S.T.U.D.I.O.) ────────── */
+
+.metodo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.metodo-card {
+  background: var(--linen);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.3rem;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.metodo-card:hover {
+  background: var(--sand);
+  border-color: var(--warm-accent-light);
+}
+
+.metodo-letter {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--warm-accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.metodo-nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--espresso);
+  margin-bottom: 0.4rem;
+}
+
+.metodo-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--espresso-light);
+  line-height: 1.6;
+}
+
+/* ─── Risultati list ──────────────────────────────────────────── */
+
+.risultati-list {
+  list-style: none;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.risultati-list li {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--espresso-light);
+  line-height: 1.8;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.risultati-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--warm-accent);
+  font-size: 0.7rem;
+  top: 0.4em;
+}
+
+.risultati-list strong {
+  color: var(--espresso);
+  font-weight: 500;
+}
+
+/* ─── Chi è per te / non per te ───────────────────────────────── */
+
+.chi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.chi-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.chi-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--espresso);
+  margin-bottom: 1rem;
+}
+
+.chi-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.chi-list li {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--espresso-light);
+  line-height: 1.7;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.chi-list--yes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--warm-accent);
+  font-weight: 500;
+}
+
+.chi-list--no li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--espresso-light);
+  opacity: 0.6;
+}
+
+/* ─── Bonus list ──────────────────────────────────────────────── */
+
+.bonus-list {
+  list-style: none;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bonus-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.bonus-list li:last-child {
+  border-bottom: none;
+}
+
+.bonus-nome {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+.bonus-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--espresso-light);
+}
+
+/* ─── Price box ───────────────────────────────────────────────── */
+
+.price-box {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: var(--sand);
+  border-radius: 16px;
+}
+
+.price-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+.price-note {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--espresso-light);
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  .metodo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .chi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    COMMUNITY PAGE
    ═══════════════════════════════════════════════════════════════ */

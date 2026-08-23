@@ -14,18 +14,18 @@
    blu cianografia per direzione/lucidità, rame per urgenza/CTA. */
 
 :root {
-  --ink:                #12161C;
+  --ink:                #2C2C2A;
   --ink-soft:            #1C222B;
   --ink-line:            rgba(243,244,241,0.14);
   --paper:               #F3F4F1;
   --paper-dim:           #E7E8E3;
   --paper-line:          rgba(18,22,28,0.12);
   --paper-line-strong:   rgba(18,22,28,0.22);
-  --graphite:            #565F68;
-  --graphite-soft:       #8A9099;
-  --blueprint:           #2451D6;
-  --blueprint-deep:      #17348C;
-  --blueprint-tint:      rgba(36,81,214,0.08);
+  --graphite:            #3D4550;
+  --graphite-soft:       #5E6670;
+  --blueprint:           #1F4E5F;
+  --blueprint-deep:      #14323E;
+  --blueprint-tint:      rgba(31,78,95,0.08);
   --copper:              #C1531F;
   --copper-light:        #E07B3F;
   --font-display:        'Space Grotesk', sans-serif;
@@ -44,7 +44,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   min-height: 100vh;
   position: relative;
@@ -106,7 +106,7 @@ body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 65% 10%;
+  object-position: 50% 25%;
   border-radius: 50%;
   display: block;
 }
@@ -115,10 +115,10 @@ body::before {
 
 .brand-name {
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .brand-author {
@@ -132,8 +132,8 @@ body::before {
 }
 
 .brand-tagline {
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--graphite);
   text-align: center;
   max-width: 320px;
@@ -271,8 +271,8 @@ body::before {
 
 .c-h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.01em;
   color: var(--ink);
@@ -307,8 +307,8 @@ body::before {
 
 .c-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 600;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -321,8 +321,8 @@ body::before {
 }
 
 .c-hero__sub {
-  font-size: 0.98rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--graphite);
   max-width: 520px;
   line-height: 1.9;
@@ -405,6 +405,37 @@ body::before {
   height: 16px;
 }
 
+/* ─── Bio block ──────────────────────────────────────────────── */
+
+.bio-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.bio-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border: 2px solid var(--paper-line-strong);
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .bio-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 /* ─── Step timeline ──────────────────────────────────────────── */
 
 .step-list {
@@ -440,16 +471,16 @@ body::before {
 }
 
 .step-text {
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--graphite);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
 }
 
 .step-list-items {
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--graphite);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2;
   margin-top: 1rem;
   padding-left: 1.2rem;
@@ -522,8 +553,8 @@ body::before {
 }
 
 .metodo-desc {
-  font-size: 0.82rem;
-  font-weight: 300;
+  font-size: 0.88rem;
+  font-weight: 400;
   color: var(--graphite);
   line-height: 1.6;
 }
@@ -539,8 +570,8 @@ body::before {
 }
 
 .risultati-list li {
-  font-size: 0.92rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--graphite);
   line-height: 1.8;
   padding-left: 1.6rem;
@@ -596,8 +627,8 @@ body::before {
 }
 
 .chi-list li {
-  font-size: 0.88rem;
-  font-weight: 300;
+  font-size: 0.95rem;
+  font-weight: 400;
   color: var(--graphite);
   line-height: 1.7;
   padding-left: 1.5rem;
@@ -646,8 +677,8 @@ body::before {
 }
 
 .testi-testo {
-  font-size: 0.95rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--ink);
   line-height: 1.7;
   margin-bottom: 1.2rem;
@@ -698,9 +729,65 @@ body::before {
 }
 
 .bonus-desc {
-  font-size: 0.82rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--graphite);
+}
+
+/* ─── FAQ / Obiezioni ───────────────────────────────────────────── */
+
+.faq-list {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--paper-line-strong);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--paper-line-strong);
+}
+
+.faq-question {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 1.2rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--blueprint);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+details[open] .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--graphite);
+  line-height: 1.8;
+  padding-bottom: 1.4rem;
+  max-width: 640px;
 }
 
 /* ─── Price box ───────────────────────────────────────────────── */
@@ -785,12 +872,27 @@ body::before {
 }
 
 .cta-section .c-hero__sub {
-  color: var(--graphite-soft);
+  color: var(--paper);
   position: relative;
 }
 
 .cta-section .c-hero__note {
+  color: rgba(243,244,241,0.85);
   position: relative;
+}
+
+.cta-section .pill.filled {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.cta-section .pill.filled:hover {
+  background: var(--blueprint);
+  color: var(--paper);
+  border-color: var(--blueprint);
 }
 
 .cta-section .c-pill {
@@ -864,8 +966,8 @@ body::before {
 
 .comm-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 600;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -879,25 +981,111 @@ body::before {
   margin-top: 0.4rem;
 }
 
-/* ─── Video ──────────────────────────────────────────────────── */
+/* ─── Video intro label ──────────────────────────────────────── */
 
-.video-wrapper {
-  position: relative;
+.video-intro {
   max-width: 700px;
-  margin: 2.5rem auto;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--paper-line-strong);
-  aspect-ratio: 16 / 9;
+  margin: 2rem auto 1.5rem;
+  padding: 0 2rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* ─── Video ──────────────────────────────────────────────────── */
+
+.video-section {
+  max-width: 700px;
+  margin: 5.5rem auto 0;
+  padding: 0 2rem;
+}
+
+.video-native {
+  display: block;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid var(--paper-line-strong);
+  background: var(--ink);
+}
+
+/* ─── Video placeholder ──────────────────────────────────────── */
+
+.video-embed-placeholder {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: 1.5px dashed var(--paper-line-strong);
+  background: var(--paper-dim);
+}
+
+.video-embed {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(18,22,28,0.13);
+}
+
+.video-embed iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 0;
+  display: block;
+}
+
+.video-embed--short {
+  max-width: 400px;
+  aspect-ratio: 9 / 16;
+}
+
+.video-placeholder {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: 1.5px dashed var(--paper-line-strong);
+  background: var(--paper-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder__text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--graphite-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── Casi studio box ────────────────────────────────────────── */
+
+.casi-studio-box {
+  margin-top: 2.5rem;
+  padding: 1.8rem 2rem;
+  border: 1.5px solid var(--copper);
+  border-radius: 8px;
+  background: rgba(193,83,31,0.04);
+  text-align: center;
+}
+
+.casi-studio-box p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
 }
 
 /* ─── Info grid ──────────────────────────────────────────────── */
@@ -1000,8 +1188,8 @@ body::before {
 }
 
 .comm-text {
-  font-size: 0.96rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--graphite);
   line-height: 1.9;
   margin-bottom: 1.5rem;
@@ -1020,8 +1208,8 @@ body::before {
 
 .comm-h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.01em;
   color: var(--ink);
@@ -1034,8 +1222,8 @@ body::before {
 }
 
 .comm-list li {
-  font-size: 0.95rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--graphite);
   line-height: 2;
   padding-left: 1.5rem;
@@ -1050,6 +1238,16 @@ body::before {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   top: 0.25em;
+}
+
+.community-screenshot {
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  margin: 2rem auto 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 28px rgba(18,22,28,0.12);
+  border: 1px solid var(--paper-line-strong);
 }
 
 .comm-testimonials {
